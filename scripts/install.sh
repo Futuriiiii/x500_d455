@@ -23,7 +23,6 @@ while true; do
       sed -i '1 i enable_d455: [False, '"'"'Add realsense d455 to the vehicle'"'"', [x500]]' "$file"
     fi
     
-    ln -fs "$MY_PATH"/config/d455.yaml "$simulation_path"/config/.
     # add mounting options for the model
     UAVS=("x500")
     
