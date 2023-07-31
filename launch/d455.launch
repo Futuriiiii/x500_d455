@@ -1,6 +1,0 @@
-<launch>
-
-  <!-- defines name of the namespace of the drone -->
-  <arg name="UAV_NAME" default="$(env UAV_NAME)" />
-
-</launch>
