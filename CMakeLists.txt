@@ -8,8 +8,6 @@ catkin_package(
 )
 
 include_directories(
-	config
-	launch
 	models
 	scripts
 )

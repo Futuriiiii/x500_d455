@@ -2,7 +2,6 @@
 
   <link name="d455_link">
     <pose>0.086 0 -0.05 3.1415 0 1.5708</pose>
-    {# <pose>0.1558 0 -0.0605 1.5708 0 1.5708</pose> #}
     <inertial>
       <mass>0.072</mass>
       <inertia>
@@ -26,7 +25,8 @@
     </visual>
 
     <collision name="d455_collision">
-      <pose>0.1427 0 -0.0605 0 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
+      {# <pose>0.1427 0 -0.0605 0 0 0</pose> #}
       <geometry>
         <box>
           <size>0.026 0.124 0.029</size>
@@ -53,8 +53,8 @@
     <kinematic>0</kinematic>
     <gravity>1</gravity>
 
-    <sensor name='d455color' type='camera'>
-      <camera name='d455'>
+    <sensor name='uav1/d455_rgbd_color' type='camera'>
+      <camera name='uav1/d455_rgbd_color'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>640</width>
@@ -73,12 +73,17 @@
       </camera>
       <always_on>1</always_on>
       <update_rate>30</update_rate>
-      <visualize>0</visualize>
-      <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
+      <visualize>1</visualize>
+      <pose>0 0 0 0 -1.5708 1.5708</pose>
+      {# <pose>0.15115 0.0475 -0.0605 0 -0 0</pose> #}
     </sensor>
 
-    <sensor name='d455ired1' type='camera'>
-      <camera name='d455'>
+    <sensor name='uav1/d455_rgbd_infra_stereo' type='multicamera'>
+			<always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+      <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
+      <camera name='uav1/d455_rgbd_ired1'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -98,11 +103,10 @@
       <always_on>1</always_on>
       <update_rate>90</update_rate>
       <visualize>0</visualize>
-      <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
-    </sensor>
+      <pose>0 0 0 0 -1.5708 1.5708</pose>
+      {# <pose>0.15115 0.0475 -0.0605 0 -0 0</pose> #}
 
-    <sensor name='d455ired2' type='camera'>
-      <camera name='d455'>
+      <camera name='uav1/d455_rgbd_ired2'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -119,14 +123,11 @@
           <stddev>0.05</stddev>
         </noise>
       </camera>
-      <always_on>1</always_on>
-      <update_rate>90</update_rate>
-      <visualize>0</visualize>
-      <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
+
     </sensor>
 
-    <sensor name='d455depth' type='depth'>
-      <camera name='d455'>
+    <sensor name='uav1/d455_rgbd_aligned_depth_to_color' type='depth'>
+      <camera name='uav1/d455_rgbd_aligned_depth_to_color'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -145,7 +146,8 @@
       <always_on>1</always_on>
       <update_rate>90</update_rate>
       <visualize>0</visualize>
-      <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
+      <pose>0 0 0 0 -1.5708 1.5708</pose>
+      {# <pose>0.15115 0.0475 -0.0605 0 -0 0</pose> #}
     </sensor>
   </link>
   
@@ -155,29 +157,24 @@
     <pose>0 0 0 0 0 0</pose>
   </joint>
 
-  <plugin name='camera' filename='librealsense_gazebo_plugin.so'>
-    <prefix>d455</prefix>
-    <depthUpdateRate>30.0</depthUpdateRate>
-    <colorUpdateRate>30.0</colorUpdateRate>
-    <infraredUpdateRate>30.0</infraredUpdateRate>
-    <depthTopicName>depth/image_raw</depthTopicName>
-    <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
-    <colorTopicName>color/image_raw</colorTopicName>
-    <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
-    <infrared1TopicName>infra1/image_raw</infrared1TopicName>
-    <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
-    <infrared2TopicName>infra2/image_raw</infrared2TopicName>
-    <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
-    <colorOpticalframeName>d455_color_optical_frame</colorOpticalframeName>
-    <depthOpticalframeName>d455_depth_optical_frame</depthOpticalframeName>
-    <infrared1OpticalframeName>d455_infra1_ir_optical_frame</infrared1OpticalframeName>
-    <infrared2OpticalframeName>d455_infra2_ir_optical_frame</infrared2OpticalframeName>
-    <rangeMinDepth>0.520</rangeMinDepth>
-    <rangeMaxDepth>10.0</rangeMaxDepth>
-    <pointCloud>1</pointCloud>
-    <pointCloudTopicName>depth/color/points</pointCloudTopicName>
-    <pointCloudCutoff>0.25</pointCloudCutoff>
-    <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+  <plugin name='d455_rgbd_plugin' filename='libMRSGazeboRealsensePlugin.so'>
+		<camera_name>d455_rgbd</camera_name>
+		<camera_suffix></camera_suffix>
+		<useRealistic>0</useRealistic>
+		<noisePerMeter>0.2</noisePerMeter>
+		<minNoiseDistance>4.0</minNoiseDistance>
+		<perlinEmptyThreshold>0.8</perlinEmptyThreshold>
+		<perlinEmptySpeed>0.2</perlinEmptySpeed>
+		<imageScaling>4</imageScaling>
+		<blurSize>15</blurSize>
+		<erosionSize>5</erosionSize>
+		<parentFrameName>/uav1/fcu</parentFrameName>
+		<x>0.086</x>
+		<y>0</y>
+		<z>-0.05</z>
+		<roll>3.1415</roll>
+		<pitch>0</pitch>
+  	<yaw>1.5708</yaw>
   </plugin>
 
   <frame name='d455_accel_optical_joint' attached_to='d455_accel_frame'>
