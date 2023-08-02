@@ -29,8 +29,8 @@ while true; do
     for j in "${UAVS[@]}"
     do
       file="$simulation_path"/models/mrs_robots_description/sdf/$j.sdf.jinja
-      if ! grep -q "$j"\_config "$file"; then
-        sed -i '/\/model/ i\\t{%- include "mrs_robots_description/sdf/'$j'_d455.sdf.jinja" -%}' "$file"
+      if ! grep -q "$j"\_d455 "$file"; then
+        sed -i '/\/model/ i \\t{%- include "mrs_robots_description/sdf/'$j'_d455.sdf.jinja" -%}' "$file"
       fi
       ln -fs "$MY_PATH"/models/sdf/"$j"\_d455.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
     done

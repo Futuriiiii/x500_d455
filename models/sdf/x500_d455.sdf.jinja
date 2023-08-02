@@ -26,7 +26,6 @@
 
     <collision name="d455_collision">
       <pose>0 0 0 0 0 0</pose>
-      {# <pose>0.1427 0 -0.0605 0 0 0</pose> #}
       <geometry>
         <box>
           <size>0.026 0.124 0.029</size>
@@ -53,8 +52,8 @@
     <kinematic>0</kinematic>
     <gravity>1</gravity>
 
-    <sensor name='uav1/d455_rgbd_color' type='camera'>
-      <camera name='uav1/d455_rgbd_color'>
+    <sensor name='uav1/down_rgbd_color' type='camera'>
+      <camera name='uav1/down_rgbd_color'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -73,17 +72,16 @@
       </camera>
       <always_on>1</always_on>
       <update_rate>30</update_rate>
-      <visualize>1</visualize>
+      <visualize>0</visualize>
       <pose>0 0 0 0 -1.5708 1.5708</pose>
-      {# <pose>0.15115 0.0475 -0.0605 0 -0 0</pose> #}
     </sensor>
 
-    <sensor name='uav1/d455_rgbd_infra_stereo' type='multicamera'>
+    <sensor name='uav1/down_rgbd_infra_stereo' type='multicamera'>
 			<always_on>1</always_on>
       <update_rate>90</update_rate>
       <visualize>0</visualize>
       <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
-      <camera name='uav1/d455_rgbd_ired1'>
+      <camera name='uav1/down_rgbd_ired1'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -104,9 +102,8 @@
       <update_rate>90</update_rate>
       <visualize>0</visualize>
       <pose>0 0 0 0 -1.5708 1.5708</pose>
-      {# <pose>0.15115 0.0475 -0.0605 0 -0 0</pose> #}
 
-      <camera name='uav1/d455_rgbd_ired2'>
+      <camera name='uav1/down_rgbd_ired2'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -126,8 +123,8 @@
 
     </sensor>
 
-    <sensor name='uav1/d455_rgbd_aligned_depth_to_color' type='depth'>
-      <camera name='uav1/d455_rgbd_aligned_depth_to_color'>
+    <sensor name='uav1/down_rgbd_aligned_depth_to_color' type='depth'>
+      <camera name='uav1/down_rgbd_aligned_depth_to_color'>
         <horizontal_fov>1.51844</horizontal_fov>
         <image>
           <width>1280</width>
@@ -147,7 +144,6 @@
       <update_rate>90</update_rate>
       <visualize>0</visualize>
       <pose>0 0 0 0 -1.5708 1.5708</pose>
-      {# <pose>0.15115 0.0475 -0.0605 0 -0 0</pose> #}
     </sensor>
   </link>
   
@@ -157,8 +153,8 @@
     <pose>0 0 0 0 0 0</pose>
   </joint>
 
-  <plugin name='d455_rgbd_plugin' filename='libMRSGazeboRealsensePlugin.so'>
-		<camera_name>d455_rgbd</camera_name>
+  <plugin name='down_rgbd_plugin' filename='libMRSGazeboRealsensePlugin.so'>
+		<camera_name>down_rgbd</camera_name>
 		<camera_suffix></camera_suffix>
 		<useRealistic>1</useRealistic>
 		<noisePerMeter>0.2</noisePerMeter>
