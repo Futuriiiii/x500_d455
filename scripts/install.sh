@@ -33,6 +33,7 @@ while true; do
         sed -i '/\/model/ i \\t{%- include "mrs_robots_description/sdf/'$j'_d455.sdf.jinja" -%}' "$file"
       fi
       ln -fs "$MY_PATH"/models/sdf/"$j"\_d455.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
+      ln -fs "$MY_PATH"/models/sdf/d455_macro.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
     done
 
     break
