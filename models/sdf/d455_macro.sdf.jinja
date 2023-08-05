@@ -23,13 +23,13 @@
             <izz>0.00387926</izz>
         </inertia>
     </inertial>
-    
+
     <visual name="{{ camera_name }}_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
             <mesh>
-            <uri>model://mrs_robots_description/meshes/custom/d455/d455.stl</uri>
-            <scale>0.001 0.001 0.001</scale>
+                <uri>model://mrs_robots_description/meshes/custom/d455/d455.stl</uri>
+                <scale>0.001 0.001 0.001</scale>
             </mesh>
         </geometry>
     </visual>
@@ -92,12 +92,12 @@
         <always_on>1</always_on>
         <update_rate>30</update_rate>
         <visualize>0</visualize>
-        <pose>0 0 0 0 -1.5708 1.5708</pose>
+        <pose>0 0 0 {{ pi }} {{ -rad90 }} {{ rad90 }}</pose>
     </sensor>
 
     <sensor name='{{ namespace}}/down_rgbd_infra_stereo' type='multicamera'>
         <always_on>1</always_on>
-        <update_rate>30</update_rate>
+        <update_rate>60</update_rate>
         <visualize>0</visualize>
         <pose>0.15115 0.0475 -0.0605 0 -0 0</pose>
         <camera name='{{ namespace}}/down_rgbd_ired1'>
@@ -130,14 +130,14 @@
         <always_on>1</always_on>
         <update_rate>30</update_rate>
         <visualize>0</visualize>
-        <pose>0 0 0 0 {{ -rad90 }} {{ rad90 }}</pose>
+        <pose>0 0 0 {{ pi }} {{ -rad90 }} {{ rad90 }}</pose>
 
         <camera name='{{ namespace}}/down_rgbd_ired2'>
             <horizontal_fov>{{ rad87 }}</horizontal_fov>
             <image>
-            <width>1280</width>
-            <height>720</height>
-            <format>L_INT8</format>
+                <width>1280</width>
+                <height>720</height>
+                <format>L_INT8</format>
             </image>
             <clip>
                 <near>0.2</near>
@@ -191,14 +191,14 @@
         <always_on>1</always_on>
         <update_rate>15</update_rate>
         <visualize>0</visualize>
-        <pose>0 0 0 0 {{ -rad90 }} {{ rad90 }}</pose>
+        <pose>0 0 0 {{ pi }} {{ -rad90 }} {{ rad90 }}</pose>
     </sensor>
 </link>
 
 <plugin name='down_rgbd_plugin' filename='libMRSGazeboRealsensePlugin.so'>
     <camera_name>down_rgbd</camera_name>
     <camera_suffix></camera_suffix>
-    <useRealistic>1</useRealistic>
+    <useRealistic>0</useRealistic>
     <noisePerMeter>0.2</noisePerMeter>
     <minNoiseDistance>4.0</minNoiseDistance>
     <perlinEmptyThreshold>0.8</perlinEmptyThreshold>
@@ -221,4 +221,3 @@
     <pose>0 0 0 0 0 0</pose>
 </joint>
 {%- endmacro -%}
-
