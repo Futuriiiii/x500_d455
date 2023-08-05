@@ -29,11 +29,17 @@ while true; do
     for j in "${UAVS[@]}"
     do
       file="$simulation_path"/models/mrs_robots_description/sdf/$j.sdf.jinja
+      # add d455
       if ! grep -q "$j"\_d455 "$file"; then
         sed -i '/\/model/ i \\t{%- include "mrs_robots_description/sdf/'$j'_d455.sdf.jinja" -%}' "$file"
+        ln -fs "$MY_PATH"/models/sdf/"$j"\_d455.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
+        echo $'\e[1;32mAdded d455 file.\e[0m'
       fi
-      ln -fs "$MY_PATH"/models/sdf/"$j"\_d455.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
-      ln -fs "$MY_PATH"/models/sdf/d455_macro.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
+      # add macro file for d455
+      if ! grep -q d455_macro "$file"; then
+        ln -fs "$MY_PATH"/models/sdf/d455_macro.sdf.jinja "$simulation_path"/models/mrs_robots_description/sdf/.
+        echo $'\e[1;32mAdded d455 macro file.\e[0m\n'
+      fi
     done
 
     break
