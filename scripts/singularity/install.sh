@@ -3,7 +3,7 @@
 # get the path to this script
 MY_PATH="$(dirname "$(dirname "$(realpath "$0")")")"
 
-simulation_path=$(rospack find mrs_simulation)
+simulation_path=/opt/mrs/mrs_workspace/install/share/mrs_simulation
 
 # Ask about udev rules
 while true; do
