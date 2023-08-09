@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get the path to this script
-MY_PATH=/tmp/singularity/home/user_ros_workspace/x500_d455
+MY_PATH=/home/rafa/user_ros_workspace/src/x500_d455
 
 simulation_path=/opt/mrs/mrs_workspace/install/share/mrs_simulation
 
