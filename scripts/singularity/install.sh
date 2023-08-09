@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get the path to this script
-MY_PATH="$(dirname "$(dirname "$(realpath "$0")")")"
+MY_PATH=/tmp/singularity/home/user_ros_workspace/x500_d455
 
 simulation_path=/opt/mrs/mrs_workspace/install/share/mrs_simulation
 
