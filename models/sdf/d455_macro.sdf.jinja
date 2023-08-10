@@ -220,4 +220,98 @@
     <child>{{ camera_name }}_link</child>
     <pose>0 0 0 0 0 0</pose>
 </joint>
+
+<frame name='{{ camera_name }}accel_optical_joint' attached_to='{{ camera_name }}accel_frame'>
+<pose>0 0 0 -1.5708 -0 -1.5708</pose>
+</frame>
+
+<frame name='{{ camera_name }}accel_optical_frame' attached_to='{{ camera_name }}accel_optical_joint'/>
+
+<frame name='{{ camera_name }}accel_joint' attached_to='{{ camera_name }}link'>
+<pose>-0.01602 -0.03022 0.0074 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}accel_frame' attached_to='{{ camera_name }}accel_joint'/>
+
+<frame name='{{ camera_name }}color_optical_joint' attached_to='{{ camera_name }}color_frame'>
+<pose>0 0 0 -1.5708 -0 -1.5708</pose>
+</frame>
+
+<frame name='{{ camera_name }}color_optical_frame' attached_to='{{ camera_name }}color_optical_joint'/>
+
+<frame name='{{ camera_name }}color_joint' attached_to='{{ camera_name }}link'>
+<pose>0 -0.059 0 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}color_frame' attached_to='{{ camera_name }}color_joint'/>
+
+<frame name='{{ camera_name }}depth_optical_joint' attached_to='{{ camera_name }}depth_frame'>
+<pose>0 0 0 -1.5708 -0 -1.5708</pose>
+</frame>
+
+<frame name='{{ camera_name }}depth_optical_frame' attached_to='{{ camera_name }}depth_optical_joint'/>
+
+<frame name='{{ camera_name }}depth_joint' attached_to='{{ camera_name }}link'>
+<pose>0 0 0 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}depth_frame' attached_to='{{ camera_name }}depth_joint'/>
+
+<frame name='{{ camera_name }}imu_optical_joint' attached_to='{{ camera_name }}gyro_optical_frame'>
+<pose>0 0 0 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}imu_optical_frame' attached_to='{{ camera_name }}imu_optical_joint'/>
+
+<frame name='{{ camera_name }}gyro_optical_joint' attached_to='{{ camera_name }}gyro_frame'>
+<pose>0 0 0 -1.5708 -0 -1.5708</pose>
+</frame>
+
+<frame name='{{ camera_name }}gyro_optical_frame' attached_to='{{ camera_name }}gyro_optical_joint'/>
+
+<frame name='{{ camera_name }}gyro_joint' attached_to='{{ camera_name }}link'>
+<pose>-0.01602 -0.03022 0.0074 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}gyro_frame' attached_to='{{ camera_name }}gyro_joint'/>
+
+<frame name='{{ camera_name }}infra1_optical_joint' attached_to='{{ camera_name }}infra1_frame'>
+<pose>0 0 0 -1.5708 -0 -1.5708</pose>
+</frame>
+
+<frame name='{{ camera_name }}infra1_optical_frame' attached_to='{{ camera_name }}infra1_optical_joint'/>
+
+<frame name='{{ camera_name }}infra1_joint' attached_to='{{ camera_name }}link'>
+<pose>0 0 0 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}infra1_frame' attached_to='{{ camera_name }}infra1_joint'/>
+
+<frame name='{{ camera_name }}infra2_optical_joint' attached_to='{{ camera_name }}infra2_frame'>
+<pose>0 0 0 -1.5708 -0 -1.5708</pose>
+</frame>
+
+<frame name='{{ camera_name }}infra2_optical_frame' attached_to='{{ camera_name }}infra2_optical_joint'/>
+
+<frame name='{{ camera_name }}infra2_joint' attached_to='{{ camera_name }}link'>
+<pose>0 -0.095 0 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}infra2_frame' attached_to='{{ camera_name }}infra2_joint'/>
+
+<frame name='{{ camera_name }}link_joint' attached_to='{{ camera_name }}bottom_screw_frame'>
+<pose>0.01115 0.0475 0.0145 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}link' attached_to='{{ camera_name }}link_joint'/>
+
+<frame name='{{ camera_name }}joint' attached_to='{{ parent_link }}'>
+<pose>0.14 0 -0.075 0 -0 0</pose>
+</frame>
+
+<frame name='{{ camera_name }}bottom_screw_frame' attached_to='{{ camera_name }}joint'/>
+
+<frame name='{{ camera_name }}link' attached_to='{{ parent_link }}'>
+<pose>0 0 0 0 0 0</pose>
+</frame>
 {%- endmacro -%}
